@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { PageProps } from "../types/page/login";
+
 import {
   Form,
   FormControl,
@@ -10,10 +10,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/app/components/ui/form";
 import { useForm, FieldValues } from "react-hook-form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import { Button } from "@/app/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -29,6 +29,7 @@ export default function LoginPage() {
       redirect: false,
     });
     console.log("res", res);
+
     if (res?.ok) {
       router.push("/");
     } else {
