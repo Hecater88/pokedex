@@ -5,6 +5,7 @@ import { Input } from "../ui/input";
 import { useDebaunce } from "@/app/hooks/useDebaunce";
 import { LoadingSpinner } from "../ui/loading-spinner";
 import { Pokemon } from "@/app/types/pokemon";
+import Link from "next/link";
 
 const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
   const [pokemons, setPokemons] = useState(initialPokemonList.slice(0, 20));
@@ -74,7 +75,11 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
       />
       <div>
         {list?.map((pokemon, index) => (
-          <div key={index}>{pokemon.name}</div>
+          <div key={index}>
+            <div>
+              <Link href={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
+            </div>
+          </div>
         ))}
       </div>
       <div>{loading && <LoadingSpinner size={100} />}</div>
