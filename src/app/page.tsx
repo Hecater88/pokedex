@@ -11,7 +11,7 @@ export default async function Home() {
   console.log("next", list.next);
 
   return (
-    <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start font-pokemon">
       {authSession?.user && (
         <div>
           <PokemonListComponent initialPokemonList={list.results} />

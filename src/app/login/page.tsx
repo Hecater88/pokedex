@@ -1,19 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/app/components/ui/form";
 import { useForm, FieldValues } from "react-hook-form";
-import { Input } from "@/app/components/ui/input";
-import { Button } from "@/app/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -46,42 +34,20 @@ export default function LoginPage() {
 
   return (
     <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="Username" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="Password" {...field} type="password" />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          {error && (
-            <p className="text-red-600 text-center">Invalid user or password</p>
-          )}
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <div>
+          <label>Username</label>
+          <input id="username" placeholder="Username" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input id="password" placeholder="Password" type="password" />
+        </div>
+        {error && (
+          <p className="text-red-600 text-center">Invalid user or password</p>
+        )}
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 }

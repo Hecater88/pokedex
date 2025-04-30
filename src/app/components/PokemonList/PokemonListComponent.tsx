@@ -1,9 +1,7 @@
 "use client";
 import { PokemonListProps } from "@/app/types/components/PokemonListProps";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Input } from "../ui/input";
 import { useDebaunce } from "@/app/hooks/useDebaunce";
-import { LoadingSpinner } from "../ui/loading-spinner";
 import { Pokemon } from "@/app/types/pokemon";
 import Link from "next/link";
 
@@ -68,7 +66,7 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
 
   return (
     <div>
-      <Input
+      <input
         placeholder="pokemon name or id"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
@@ -82,7 +80,7 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
           </div>
         ))}
       </div>
-      <div>{loading && <LoadingSpinner size={100} />}</div>
+      <div>{loading && "Loading..."}</div>
       <div ref={nextPokemons} className="h-10" />
     </div>
   );
