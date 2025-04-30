@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useDebaunce } from "@/app/hooks/useDebaunce";
 import { Pokemon } from "@/app/types/pokemon";
 import Link from "next/link";
+import Input from "../shared/input";
+import CardComponent from "../Card/CardComponent";
 
 const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
   const [pokemons, setPokemons] = useState(initialPokemonList.slice(0, 20));
@@ -66,18 +68,20 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
 
   return (
     <div>
-      <input
-        placeholder="pokemon name or id"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-      />
-      <div>
+      <div className="mb-4">
+        <Input
+          placeholder="pokemon name or id"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-4">
         {list?.map((pokemon, index) => (
-          <div key={index}>
-            <div>
-              <Link href={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
-            </div>
-          </div>
+          <Link key={index} href={`/pokemon/${pokemon.name}`}>
+            <CardComponent>
+              <div>{pokemon.name}</div>
+            </CardComponent>
+          </Link>
         ))}
       </div>
       <div>{loading && "Loading..."}</div>
