@@ -1,29 +1,27 @@
-import Link from "next/link";
 import { getServerAuthSession } from "../server/auth";
 import { getPokemonList } from "./services/pokemon-list-api";
 import PokemonListComponent from "./components/PokemonList/PokemonListComponent";
+import { Pokemon } from "./types/pokemon";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const authSession = await getServerAuthSession();
-  console.log("authSession", authSession);
+  if (!authSession) {
+    redirect("/login");
+  }
+
   const list = await getPokemonList();
-  console.log("list", list);
-  console.log("next", list.next);
+
+  const listWithId = list.results.map((item: Pokemon, index: number) => {
+    return { ...item, id: index };
+  });
 
   return (
-    <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start font-pokemon">
+    <main className="flex flex-col gap-[32px] items-center bg-gray-100">
       {authSession?.user && (
         <div>
-          <PokemonListComponent initialPokemonList={list.results} />
+          <PokemonListComponent initialPokemonList={listWithId} />
         </div>
-      )}
-      {!authSession?.user && (
-        <Link
-          className="font-medium mt-2 text-blue-600 hover:underline"
-          href="/login"
-        >
-          Login
-        </Link>
       )}
     </main>
   );

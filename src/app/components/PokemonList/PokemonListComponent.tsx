@@ -6,6 +6,9 @@ import { Pokemon } from "@/app/types/pokemon";
 import Link from "next/link";
 import Input from "../shared/input";
 import CardListComponent from "../CardList/CardListComponent";
+import Loader from "../shared/loading";
+import { signOut } from "next-auth/react";
+import Button from "../shared/button";
 
 const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
   const [pokemons, setPokemons] = useState(initialPokemonList.slice(0, 20));
@@ -67,23 +70,33 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
   }, [listFiltered, searchValue, pokemons]);
 
   return (
-    <div>
-      <div className="mb-4">
-        <Input
-          placeholder="pokemon name or id"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
+    <div className="max-w-6xl m-auto">
+      <div className="flex justify-end">
+        <Button
+          onClick={() => signOut({ callbackUrl: "/login" })}
+          className="px-4 py-2 bg-red-500 text-white"
+        >
+          Log out
+        </Button>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        {list?.map((pokemon, index) => (
-          <Link key={index} href={`/pokemon/${pokemon.name}`}>
-            <CardListComponent name={pokemon.name} id={index} />
-          </Link>
-        ))}
+      <div className="p-4">
+        <div className="mb-4">
+          <Input
+            placeholder="pokemon name or id"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          {list?.map((pokemon, index) => (
+            <Link key={index} href={`/pokemon/${pokemon.name}`}>
+              <CardListComponent name={pokemon.name} id={pokemon.id} />
+            </Link>
+          ))}
+        </div>
+        <div>{loading && <Loader />}</div>
+        <div ref={nextPokemons} className="h-10" />
       </div>
-      <div>{loading && "Loading..."}</div>
-      <div ref={nextPokemons} className="h-10" />
     </div>
   );
 };

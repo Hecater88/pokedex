@@ -8,10 +8,12 @@ const PokemonDetail = async ({ pokemonId }: { pokemonId: string }) => {
   console.log("pokemonData", pokemonData);
   return (
     <>
-      <div className="m-5">
-        <Link href={`/`}>
-          <Button className="text-black">Back</Button>
-        </Link>
+      <div className="max-w-6xl m-auto m-5 p-5">
+        <div>
+          <Link href={`/`}>
+            <Button className="text-black">Back</Button>
+          </Link>
+        </div>
         <div>
           <Dashboard pokemon={pokemonData} />
         </div>

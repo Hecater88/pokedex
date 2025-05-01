@@ -1,14 +1,14 @@
 const CardDashboard = ({
   name,
-  value,
+  children,
 }: {
   name: string;
-  value: number | string;
+  children: React.ReactNode;
 }) => {
   return (
-    <div className="nes-container with-title">
+    <div className="nes-container with-title bg-white">
       <p className="title">{name}</p>
-      <p className="text-end">{value}</p>
+      <div>{children}</div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { ButtonHTMLAttributes } from "react";
 
-const custom: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
+const Button: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => {
   return (
-    <button {...props} className={`pixel-button px-4 ${props?.className}`}>
+    <button {...props} className={`pixel-button px-4 py-2 ${props?.className}`}>
       {props.children}
     </button>
   );
 };
 
-export default custom;
+export default Button;
