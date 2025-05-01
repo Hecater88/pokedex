@@ -1,12 +1,12 @@
 import { Suspense } from "react";
-import DashboardDetail from "./DashboardDetail";
+import PokemonDetail from "./PokemonDetail";
 
 const PokemonPage = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <DashboardDetail pokemonId={id} />
+        <PokemonDetail pokemonId={id} />
       </Suspense>
     </div>
   );

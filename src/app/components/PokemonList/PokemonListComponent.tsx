@@ -5,7 +5,7 @@ import { useDebaunce } from "@/app/hooks/useDebaunce";
 import { Pokemon } from "@/app/types/pokemon";
 import Link from "next/link";
 import Input from "../shared/input";
-import CardComponent from "../Card/CardComponent";
+import CardListComponent from "../CardList/CardListComponent";
 
 const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
   const [pokemons, setPokemons] = useState(initialPokemonList.slice(0, 20));
@@ -78,9 +78,7 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
       <div className="grid grid-cols-2 gap-4">
         {list?.map((pokemon, index) => (
           <Link key={index} href={`/pokemon/${pokemon.name}`}>
-            <CardComponent>
-              <div>{pokemon.name}</div>
-            </CardComponent>
+            <CardListComponent name={pokemon.name} id={index} />
           </Link>
         ))}
       </div>

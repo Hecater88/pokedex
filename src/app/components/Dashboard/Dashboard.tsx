@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
-import CardComponent from "../Card/CardComponent";
-import Image from "next/image";
-import Badge from "../shared/badge";
+
+import Container from "../shared/container";
 import ProgressBar from "../shared/progess";
 import PieChart from "../shared/pie-chart";
+import PokemonOverview from "../PokemonOverview/PokemonOverview";
+import CardDashboard from "../CardDashboard/CardDashboard";
 export const datapie = {
   labels: ["Ataque", "Defensa", "Velocidad"],
   datasets: [
@@ -32,63 +32,43 @@ export const datapie2 = {
     },
   ],
 };
-const Dashboard = () => {
+const Dashboard = ({ pokemon }: { pokemon: any }) => {
   return (
     <div className="p-5">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-2">
         <div className="flex flex-col gap-6">
-          <CardComponent>
-            <div className="flex flex-col items-center justify-center gap-4">
-              <div className="flex gap-4">
-                <h1>Pokemon Name</h1>
-                <span>
-                  <b>#12</b>
-                </span>
-              </div>
-              <div>
-                <Image
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-                  alt="pokemon image"
-                  width={125}
-                  height={125}
-                />
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge>tipo 1</Badge>
-                <Badge>tipo 2</Badge>
-                <Badge>tipo 3</Badge>
-              </div>
-            </div>
-          </CardComponent>
+          <PokemonOverview pokemon={pokemon} />
 
           <div className="flex flex-col gap-6">
-            <CardComponent>
+            <Container>
               <ProgressBar value="50" max="100" style={{ height: "2rem" }} />
-            </CardComponent>
+            </Container>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <CardComponent>Height</CardComponent>
-              <CardComponent>Weight</CardComponent>
+              <CardDashboard name={"Height"} value={`${pokemon.height} kg`} />
+              <CardDashboard name={"Weight"} value={`${pokemon.weight} m`} />
+
+              <Container>Weight</Container>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-6">
-          <CardComponent>
+          <Container>
             <div>
               <PieChart data={datapie} />
             </div>
-          </CardComponent>
-          <CardComponent>
+          </Container>
+          <Container>
             <div>
               <PieChart data={datapie2} />
             </div>
-          </CardComponent>
+          </Container>
         </div>
       </div>
 
       {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
-          <CardComponent>Evoluciona a</CardComponent>
-          <CardComponent>Juegos en los que aparece</CardComponent>
+          <Container>Evoluciona a</Container>
+          <Container>Juegos en los que aparece</Container>
         </div> */}
     </div>
   );

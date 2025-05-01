@@ -3,9 +3,9 @@ import Button from "@/app/components/shared/button";
 import { getPokemonDetail } from "@/app/services/pokemon-detail-api";
 import Link from "next/link";
 
-const DashboardDetail = async ({ pokemonId }: { pokemonId: string }) => {
-  const pokemonDetail = await getPokemonDetail(pokemonId);
-
+const PokemonDetail = async ({ pokemonId }: { pokemonId: string }) => {
+  const pokemonData = await getPokemonDetail(pokemonId);
+  console.log("pokemonData", pokemonData);
   return (
     <>
       <div className="m-5">
@@ -13,12 +13,11 @@ const DashboardDetail = async ({ pokemonId }: { pokemonId: string }) => {
           <Button className="text-black">Back</Button>
         </Link>
         <div>
-          <Dashboard />
-          <div>{pokemonDetail && JSON.stringify(pokemonDetail)}</div>
+          <Dashboard pokemon={pokemonData} />
         </div>
       </div>
     </>
   );
 };
 
-export default DashboardDetail;
+export default PokemonDetail;

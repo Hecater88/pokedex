@@ -1,6 +1,21 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "nes.css/css/nes.min.css";
+@tailwind utilities;
+
+@layer utilities {
+  .pixel-button{
+    box-shadow: 0 .3em #212529, 0 -.3em #212529, .3em 0 #212529, -.3em 0 #212529;
+  }
+
+  .pixel-box {
+    color: #212529;
+    box-shadow: 0 -4px #fff, 0 -8px, 4px 0 #fff, 4px -4px, 8px 0, 0 4px #fff, 0 8px, -4px 0 #fff, -4px 4px, -8px 0, -4px -4px, 4px 4px;
+  }
+  .pixel-image {
+    image-rendering: pixelated;
+  }
+}
 
 @font-face {
   font-family: 'PokemonClassic';
