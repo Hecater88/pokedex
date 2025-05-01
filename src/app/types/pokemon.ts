@@ -15,7 +15,7 @@ export interface PokemonDetail {
   forms: ValueObject[];
   game_indices: GameIndex[];
   height: number;
-  held_items: any[];
+  held_items: unknown[];
   id: number;
   is_default: boolean;
   location_area_encounters: string;
@@ -23,7 +23,7 @@ export interface PokemonDetail {
   name: string;
   order: number;
   past_abilities: PastAbility[];
-  past_types: any[];
+  past_types: unknown[];
   species: ValueObject;
   sprites: Sprites;
   stats: Stat[];

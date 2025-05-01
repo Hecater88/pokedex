@@ -4,8 +4,12 @@ import Loader from "@/app/components/shared/loading";
 import { getServerAuthSession } from "@/server/auth";
 import { redirect } from "next/navigation";
 
-const PokemonPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = await params;
+const PokemonPage = async ({
+  params,
+}: {
+  params: Promise<{ name: string }>;
+}) => {
+  const { name } = await params;
   const authSession = await getServerAuthSession();
   if (!authSession) {
     redirect("/login");
@@ -16,13 +20,13 @@ const PokemonPage = async ({ params }: { params: { id: string } }) => {
         fallback={
           <div className="p-5">
             <h1>
-              Searching <span className="capitalize bold">{id}</span>
+              Searching <span className="capitalize bold">{name}</span>
             </h1>
             <Loader />
           </div>
         }
       >
-        <PokemonDetail pokemonId={id} />
+        <PokemonDetail pokemonId={name} />
       </Suspense>
     </div>
   );

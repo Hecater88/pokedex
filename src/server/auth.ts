@@ -8,12 +8,16 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, account, profile }) {
+      console.log("profile", profile);
+
       if (account && account.type === "credentials") {
         token.userId = account.providerAccountId; // this is Id that coming from authorize() callback
       }
       return token;
     },
     async session({ session, token, user }) {
+      console.log("user", user);
+
       session.user.id = token.userId;
       return session;
     },
@@ -29,6 +33,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        console.log("req", req);
         const { username, password } = credentials as {
           username: string;
           password: string;
