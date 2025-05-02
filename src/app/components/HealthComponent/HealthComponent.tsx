@@ -16,7 +16,7 @@ const HealthComponent = ({
         style={{ height: "2rem" }}
       />
       <div className="flex justify-between">
-        <span>{value}</span>
+        <span>{value ? value : 0}</span>
         <span>{max}</span>
       </div>
     </div>

@@ -90,7 +90,11 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
           {list?.map((pokemon, index) => (
             <Link key={index} href={`/pokemon/${pokemon.name}`}>
-              <CardListComponent name={pokemon.name} id={pokemon.id} />
+              <CardListComponent
+                name={pokemon.name}
+                id={pokemon.id}
+                data-testid="pokemon-card"
+              />
             </Link>
           ))}
         </div>
