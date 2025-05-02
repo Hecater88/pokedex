@@ -7,7 +7,7 @@ const StatsComponent = ({ stats }: { stats: Stat[] }) => {
   const defense = Number(getStat(stats, PokemonStatName.Defense));
   const speed = Number(getStat(stats, PokemonStatName.Speed));
   const statsPie = {
-    labels: ["Ataque", "Defensa", "Velocidad"],
+    labels: ["Attack", "Defense", "Speed"],
     datasets: [
       {
         data: [attack, defense, speed],
@@ -25,7 +25,7 @@ const StatsComponent = ({ stats }: { stats: Stat[] }) => {
   const specialAttack = Number(getStat(stats, PokemonStatName.Attack));
   const specialDefense = Number(getStat(stats, PokemonStatName.SpecialDefense));
   const specialStatsPie = {
-    labels: ["Ataque especial", "Defensa especial"],
+    labels: ["Special Attack", "Special Defense"],
     datasets: [
       {
         data: [specialAttack, specialDefense],
