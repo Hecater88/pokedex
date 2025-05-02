@@ -14,7 +14,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const onSubmit = async (data: FieldValues) => {
-    setErrorfalse();
+    setError(false);
     setLoading(true);
     const { username, password } = data;
     const res = await signIn("credentials", {
