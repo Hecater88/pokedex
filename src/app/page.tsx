@@ -17,7 +17,7 @@ export default async function Home() {
   });
 
   return (
-    <main className="flex flex-col gap-[32px] items-center bg-gray-100">
+    <main className="flex flex-col gap-[32px] items-center min-h-screen bg-gray-100">
       {authSession?.user && (
         <div>
           <PokemonListComponent initialPokemonList={listWithId} />

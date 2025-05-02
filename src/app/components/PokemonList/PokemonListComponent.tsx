@@ -82,7 +82,7 @@ const PokemonListComponent = ({ initialPokemonList }: PokemonListProps) => {
       <div className="p-4">
         <div className="mb-4">
           <Input
-            placeholder="pokemon name or id"
+            placeholder="pokemon name"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />

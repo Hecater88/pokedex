@@ -6,24 +6,28 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Input from "../components/shared/input";
 import Button from "../components/shared/button";
+import Loader from "../components/shared/loading";
 
 export default function LoginPage() {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit = async (data: FieldValues) => {
+    setErrorfalse();
+    setLoading(true);
     const { username, password } = data;
-    console.log("entra", username, password);
     const res = await signIn("credentials", {
       username: username,
       password: password,
       redirect: false,
     });
-    console.log("res", res);
 
     if (res?.ok) {
+      setLoading(false);
       router.push("/");
     } else {
+      setLoading(false);
       setError(true);
     }
   };
@@ -65,6 +69,7 @@ export default function LoginPage() {
             Submit
           </Button>
         </div>
+        <div className="flex justify-center">{loading && <Loader />}</div>
       </form>
     </div>
   );

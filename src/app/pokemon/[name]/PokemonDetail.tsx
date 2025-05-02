@@ -1,24 +1,24 @@
 import Dashboard from "@/app/components/Dashboard/Dashboard";
-import Button from "@/app/components/shared/button";
 import { getPokemonDetail } from "@/app/services/pokemon-detail-api";
-import Link from "next/link";
+import PokemonNotFound from "./PokemonNotFound";
 
 const PokemonDetail = async ({ pokemonId }: { pokemonId: string }) => {
-  const pokemonData = await getPokemonDetail(pokemonId);
-  console.log("pokemonData", pokemonData);
+  let pokemonData;
+  try {
+    pokemonData = await getPokemonDetail(pokemonId);
+  } catch (error) {
+    console.error("Error fetching Pokémon:", error);
+    return <PokemonNotFound />;
+  }
+
+  if (!pokemonData || !pokemonData.name) {
+    return <PokemonNotFound />;
+  }
+
   return (
-    <>
-      <div className="max-w-6xl m-auto m-5 p-5">
-        <div>
-          <Link href={`/`}>
-            <Button className="text-black">Back</Button>
-          </Link>
-        </div>
-        <div>
-          <Dashboard pokemon={pokemonData} />
-        </div>
-      </div>
-    </>
+    <div>
+      <Dashboard pokemon={pokemonData} />
+    </div>
   );
 };
 

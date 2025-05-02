@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Pokédex App
+
+Este proyecto es algo que siempre he querido hacer y he aprovechado esta prueba técnica para llevarlo a cabo. Se trata de una aplicación web que permite explorar información sobre Pokémon utilizando la PokeAPI. Los usuarios pueden buscar Pokémon por nombre, ver sus detalles, estadísticas y movimientos.
+
+---
+
+## Features
+
+- **Auth.js Login with Credentials** para la tarea 1
+- **Search Pokémon** por nombre
+- **Infinite Scroll** en la lista
+- **Stats Charts** usando [react-chartjs-2](https://react-chartjs-2.js.org/)
+- **Dashboard** para el detalle de un pokemon
+- **Pixel Art UI responsive** Kit hecho con [Ness.css](https://nostalgic-css.github.io/NES.css/) y fuente [Pokemon Classic](https://www.dafont.com/pokemon-classic.font)
+- **Debounced Search** un custom hook que siempre utilizo para la tarea 2
+- **SSR, client side and streaming technique.**para la tarea 5
+
+Dado que la PokeAPI no proporciona imágenes directamente, tuve que buscar las imágenes de Pokémon en otro lugar. Aunque la búsqueda de Pokémon se podía realizar mediante paginación, decidí implementar un scroll infinito.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS, [Ness.css](https://nostalgic-css.github.io/NES.css/), [Pokemon classic font](https://www.dafont.com/pokemon-classic.font)
+- **Authentication**: Auth.js (Credentials)
+- **Testing**: Jest, Cypress
+- **Charting**: Chart.js (via PieChart component)
+- **API**: [PokeAPI](https://pokeapi.co/)
+
+---
+
+## Project Structure
+
+```
+cypress/                       # E2E test setup
+src/
+│
+├── app/
+│   ├── components/            # UI
+│   ├── types/                 # Tipado
+│   ├── utils/                 # Funciones de ayuda
+│   ├── hooks/                 # Custom hooks (useDebounce, etc.)
+│   ├── services/              # Llamadas a API
+│   └── (auth, login, routes)
+└── server/                    # Server de autenticación
+(configs)                      # Archivos de configuracion
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Hecater88/pokedex.git
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Variables
+
+Create a `.env.local` file:
+
+```env
+NEXTAUTH_URL=http://localhost:3000
+```
+
+### 4. Run the Dev Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Unit Tests (Jest)
 
-## Learn More
+```bash
+npm run test
+```
 
-To learn more about Next.js, take a look at the following resources:
+### E2E Tests (Cypress)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run cypress
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✅ Todo & Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Modo oscuro
+- [ ] Añadir mas datos en el Dashboard
+- [ ] Añadir tabla de tipos (este pokemon debil contra, fuerte contra)
+- [ ] Mejorar accesibilidad (a11y)
