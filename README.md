@@ -78,6 +78,10 @@ NEXTAUTH_URL=http://localhost:3000
 npm run dev
 ```
 
+**Para logearte utilizar**
+user: admin
+password: admin
+
 ---
 
 ## 🧪 Testing
