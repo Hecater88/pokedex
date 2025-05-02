@@ -1,10 +1,10 @@
 # Next.js Pokédex App
 
-Este proyecto es algo que siempre he querido hacer y he aprovechado esta prueba técnica para llevarlo a cabo. Se trata de una aplicación web que permite explorar información sobre Pokémon utilizando la PokeAPI. Los usuarios pueden buscar Pokémon por nombre, ver sus detalles, estadísticas y movimientos.
+Este proyecto es algo que siempre he querido hacer y he aprovechado esta prueba técnica para llevarlo a cabo. Se trata de una aplicación que permite explorar información sobre Pokémon. Los usuarios pueden buscar Pokémon por nombre, ver sus detalles, estadísticas y movimientos.
 
 ---
 
-## Features
+## 🚀 Features
 
 - **Auth.js Login with Credentials** para la tarea 1
 - **Search Pokémon** por nombre
@@ -31,7 +31,7 @@ Dado que la PokeAPI no proporciona imágenes directamente, tuve que buscar las i
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 cypress/                       # E2E test setup
@@ -50,7 +50,7 @@ src/
 
 ---
 
-## Getting Started
+## 🧑‍💻 Getting Started
 
 ### 1. Clone the Repository
 
@@ -80,7 +80,7 @@ npm run dev
 
 ---
 
-## Testing
+## 🧪 Testing
 
 ### Unit Tests (Jest)
 
@@ -96,7 +96,7 @@ npm run cypress
 
 ---
 
-## ✅ Todo & Improvements
+## Todo & Improvements
 
 - [ ] Modo oscuro
 - [ ] Añadir mas datos en el Dashboard
